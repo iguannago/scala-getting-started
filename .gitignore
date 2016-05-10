@@ -19,7 +19,7 @@ project/plugins/project/
 scala-2.11.7*
 
 */*/.idea/*
-.idea/*
+.idea
 scala-getting-started/.idea/*
 functionalScalaCourse/.idea/*
 functionalScalaCourse1/example/.classpath
