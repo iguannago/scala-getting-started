@@ -18,7 +18,7 @@ object Main {
     if (r == c || r == 1 || c == 0)  {
       return 1
     }
-    return pascal(c - 1, r - 1) + pascal(c, r - 1);
+    pascal(c - 1, r - 1) + pascal(c, r - 1);
   }
 
   /**
