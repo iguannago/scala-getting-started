@@ -24,4 +24,12 @@ class BalanceSuite extends FunSuite {
   test("balance: counting is not enough") {
     assert(!balance("())(".toList))
   }
+
+  test("balance: ))(( is unbalanced") {
+    assert(!balance("))((".toList));
+  }
+
+  test("balance: (()) 3489jknr()()(df)er((df)) is balanced") {
+    assert(balance("(()) 3489jknr()()(df)er((df))".toList));
+  }
 }

@@ -1,5 +1,4 @@
 package recfun
-import common._
 
 object Main {
   def main(args: Array[String]) {
@@ -12,22 +11,43 @@ object Main {
   }
 
   /**
-   * Exercise 1
-   */
+    * Exercise 1
+    */
   def pascal(c: Int, r: Int): Int = {
-    if (r == c || r == 1 || c == 0)  {
+    if (r == c || r == 1 || c == 0) {
       return 1
     }
     pascal(c - 1, r - 1) + pascal(c, r - 1);
   }
 
-  /**
-   * Exercise 2
-   */
-  def balance(chars: List[Char]): Boolean = ???
 
   /**
-   * Exercise 3
-   */
+    * Exercise 2
+    */
+  def balance(chars: List[Char]): Boolean = {
+    def balanceRecursive(chars: List[Char], count: Int): Boolean = {
+      if (chars.nonEmpty) {
+        val element = chars.head;
+        if (element.equals('(')) {
+          return balanceRecursive(chars.tail, count + 1);
+        }
+        else {
+          if (element.equals(')')) {
+            if (count > 0) {
+              return balanceRecursive(chars.tail, count - 1);
+            }
+            else return false;
+          }
+          else return balanceRecursive(chars.tail, count);
+        }
+      }
+      return true;
+    }
+    return balanceRecursive(chars, 0);
+  }
+
+  /**
+    * Exercise 3
+    */
   def countChange(money: Int, coins: List[Int]): Int = ???
 }
