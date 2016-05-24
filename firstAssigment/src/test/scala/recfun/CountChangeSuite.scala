@@ -8,8 +8,13 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class CountChangeSuite extends FunSuite {
   import Main.countChange
+
   test("countChange: example given in instructions") {
     assert(countChange(4,List(1,2)) === 3)
+  }
+
+  test("countChange: 6 and coins of 1 and 2") {
+    assert(countChange(6, List(1,2)) === 3)
   }
 
   test("countChange: sorted CHF") {
