@@ -49,24 +49,22 @@ object Main {
   /**
     * Exercise 3
     */
-  def countChange(money: Int, coins: List[Int]): Int = {
-    def countChangeUsingOneDenomiationRecurively(money: Int, coins: List[Int]): Int = {
-      if (!coins.isEmpty) {
-        val coin = coins.head;
-        if (money % coin == 0) {
-          val result: Int = countChange(money, coins.tail) + 1;
-          println(result);
-          return result;
-        }
-        return 0;
-      }
-      return 0;
 
+  def countChange(money: Int, coins: List[Int]): Int = {
+    def count(capacity: Int, changes: List[Int]): Int = {
+      if (capacity == 0)
+        1
+      else if (capacity < 0)
+        0
+      else if (changes.isEmpty && capacity >= 1)
+        0
+      else {
+        println(s"count($capacity, ${changes.tail}) + count($capacity - ${changes.head}, $changes)");
+        count(capacity, changes.tail) + count(capacity - changes.head, changes)
+      }
     }
-    def countChangeUsingDenomiationCombinationRecursively(money: Int, coins: List[Int]): Int = {
-      0
-    }
-    return countChangeUsingOneDenomiationRecurively(money, coins) +
-    countChangeUsingDenomiationCombinationRecursively(money, coins);
+
+    count(money, coins.sortWith(_.compareTo(_) < 0))
   }
+
 }

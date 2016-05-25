@@ -14,7 +14,7 @@ class CountChangeSuite extends FunSuite {
   }
 
   test("countChange: 6 and coins of 1 and 2") {
-    assert(countChange(6, List(1,2)) === 3)
+    assert(countChange(6, List(2,1)) === 4)
   }
 
   test("countChange: sorted CHF") {
