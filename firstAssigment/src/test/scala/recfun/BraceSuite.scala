@@ -11,15 +11,27 @@ import recfun.Main._
 @RunWith(classOf[JUnitRunner])
 class BraceSuite extends FunSuite {
   import Main.braces
+
   test("() is balanced") {
     val value = Array("()")
     val result = braces(value)
     println("result: ")
     for (value <- result) {
-      print (value)
+      println(value)
+      assert(value.eq("YES"))
     }
-    assert(result(0).eq("YES"))
   }
+
+  test("({}) is balanced") {
+    val value = Array("({})")
+    val result = braces(value)
+    println("result: ")
+    for (value <- result) {
+      println(value)
+      assert(value.eq("YES"))
+    }
+  }
+
 
 
 

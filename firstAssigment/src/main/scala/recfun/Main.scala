@@ -90,11 +90,11 @@ object Main {
   def bracesRecursive(chars: List[Char], count: Int): Boolean = {
     if (chars.nonEmpty) {
       val element = chars.head;
-      if (element.equals('(')) {
+      if (element.equals('(')||element.equals('{')) {
         return bracesRecursive(chars.tail, count + 1);
       }
       else {
-        if (element.equals(')')) {
+        if (element.equals(')')||element.equals('}')) {
           if (count > 0) {
             return bracesRecursive(chars.tail, count - 1);
           }
