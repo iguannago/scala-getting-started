@@ -67,4 +67,44 @@ object Main {
     count(money, coins.sortWith(_.compareTo(_) < 0))
   }
 
+  /**
+    * Custom exercise, which is similar to Exericse 2
+    */
+  def braces(values: Array[String]): Array[String] = {
+    val result = new Array[String](values.length)
+    var i = 0
+    for (value <- values) {
+      if (bracesRecursive(value.toList, 0)) {
+        result(i) = "YES"
+      }
+      else {
+        result(i) = "NO"
+
+      }
+      i = i + 1
+    }
+    return result
+  }
+
+
+  def bracesRecursive(chars: List[Char], count: Int): Boolean = {
+    if (chars.nonEmpty) {
+      val element = chars.head;
+      if (element.equals('(')) {
+        return bracesRecursive(chars.tail, count + 1);
+      }
+      else {
+        if (element.equals(')')) {
+          if (count > 0) {
+            return bracesRecursive(chars.tail, count - 1);
+          }
+          else return false;
+        }
+        else return bracesRecursive(chars.tail, count);
+      }
+    }
+    return true;
+  }
+
+
 }
