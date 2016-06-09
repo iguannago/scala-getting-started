@@ -115,10 +115,19 @@ import org.scalatest.junit.JUnitRunner
    */
   test("sum of a few numbers") {
     assert(sum(List(1,2,0)) === 3)
+    assert(sum(List(1,-2,0,2)) === 1)
+    assert(sum(List()) === 0);
   }
+
 
   test("max of a few numbers") {
     assert(max(List(3, 7, 2)) === 7)
+  }
+
+  test("throws exception if list is emtpy") {
+    intercept[NoSuchElementException] {
+      max(List())
+    }
   }
 
 
