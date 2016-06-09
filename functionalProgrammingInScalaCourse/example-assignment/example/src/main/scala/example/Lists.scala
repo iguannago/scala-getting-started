@@ -24,7 +24,6 @@ object Lists {
     * @return The sum of all elements in `xs`
     */
   def sum(xs: List[Int]): Int = {
-    println(xs.sum)
     xs.sum
   }
 
@@ -45,6 +44,6 @@ object Lists {
     if (xs.isEmpty) {
       throw new NoSuchElementException
     }
-    0
+    xs.max
   }
 }
