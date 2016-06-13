@@ -40,7 +40,7 @@ object session {
   gcd(4, 8)
 
   /*
-  factorial
+  non-tail recursive factorial function
    */
   def factorial(n: Int): Int =
     if (n == 0) 1 else n * factorial(n - 1)
@@ -48,5 +48,22 @@ object session {
   factorial(0)
   factorial(1)
   factorial(3)
+
+  /*
+  tail recursive factorial function
+   */
+
+  def tailRecursiveFactorial(n: Int): Int = {
+    def factorialIter(acc: Int, n: Int): Int = {
+      if (n == 0) acc
+      else {
+        factorialIter(acc * n, n - 1)
+      }
+    }
+
+    factorialIter(1, 4)
+  }
+
+  tailRecursiveFactorial(4)
 
 }
