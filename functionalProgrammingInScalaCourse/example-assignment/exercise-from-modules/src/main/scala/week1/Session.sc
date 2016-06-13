@@ -27,13 +27,26 @@ object session {
   sqrt(1e60)
 
 
-/*
-gcd(a,b)
- */
+  //Some recursive functions
+
+  /*
+  gcd(a,b)
+   */
   def gcd(a: Int, b: Int): Int = {
     if (b == 0) b
     else gcd(b, a % b)
-}
-  gcd(4,8)
+  }
+
+  gcd(4, 8)
+
+  /*
+  factorial
+   */
+  def factorial(n: Int): Int =
+    if (n == 0) 1 else n * factorial(n - 1)
+
+  factorial(0)
+  factorial(1)
+  factorial(3)
 
 }
