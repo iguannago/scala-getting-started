@@ -26,4 +26,14 @@ object session {
   sqrt(1e-60)
   sqrt(1e60)
 
+
+/*
+gcd(a,b)
+ */
+  def gcd(a: Int, b: Int): Int = {
+    if (b == 0) b
+    else gcd(b, a % b)
+}
+  gcd(4,8)
+
 }
