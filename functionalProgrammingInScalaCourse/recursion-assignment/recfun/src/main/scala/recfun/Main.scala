@@ -18,16 +18,12 @@ object Main {
     else pascal(c - 1, r - 1) + pascal(c, r - 1)
   }
 
-
   /**
     * Exercise 2
     */
   def balance(chars: List[Char]): Boolean = {
     def balanceRecursive(chars: List[Char], counter: Int): Boolean = {
-      if (chars.isEmpty) {
-        if (counter == 0) true
-        else false
-      }
+      if (chars.isEmpty && counter == 0) true
       else {
         val char = chars.head
         if (char.equals('(')) balanceRecursive(chars.tail, counter + 1)
