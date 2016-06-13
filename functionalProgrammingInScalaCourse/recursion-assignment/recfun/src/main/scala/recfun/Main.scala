@@ -11,20 +11,40 @@ object Main {
   }
 
   /**
-   * Exercise 1
-   */
-    def pascal(c: Int, r: Int): Int = {
-      if ((c == 0) || (c == r)) 1
-      else pascal(c-1, r-1) + pascal(c, r-1)
+    * Exercise 1
+    */
+  def pascal(c: Int, r: Int): Int = {
+    if ((c == 0) || (c == r)) 1
+    else pascal(c - 1, r - 1) + pascal(c, r - 1)
+  }
+
+
+  /**
+    * Exercise 2
+    */
+  def balance(chars: List[Char]): Boolean = {
+    def balanceRecursive(chars: List[Char], counter: Int): Boolean = {
+      if (chars.isEmpty) {
+        if (counter == 0) true
+        else false
+      }
+      else {
+        val char = chars.head
+        if (char.equals('(')) balanceRecursive(chars.tail, counter + 1)
+        else if (char.equals(')')) {
+          if (counter > 0) balanceRecursive(chars.tail, counter - 1)
+          else false
+        }
+        else {
+          balanceRecursive(chars.tail, counter)
+        }
+      }
+    }
+    balanceRecursive(chars, 0)
   }
 
   /**
-   * Exercise 2
-   */
-    def balance(chars: List[Char]): Boolean = ???
-
-  /**
-   * Exercise 3
-   */
-    def countChange(money: Int, coins: List[Int]): Int = ???
-  }
+    * Exercise 3
+    */
+  def countChange(money: Int, coins: List[Int]): Int = ???
+}
