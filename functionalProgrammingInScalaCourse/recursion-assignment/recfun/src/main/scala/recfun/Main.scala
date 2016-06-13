@@ -23,7 +23,9 @@ object Main {
     */
   def balance(chars: List[Char]): Boolean = {
     def balanceRecursive(chars: List[Char], counter: Int): Boolean = {
-      if (chars.isEmpty && counter == 0) true
+      if (chars.isEmpty)  {
+        counter == 0
+      }
       else {
         val char = chars.head
         if (char.equals('(')) balanceRecursive(chars.tail, counter + 1)
