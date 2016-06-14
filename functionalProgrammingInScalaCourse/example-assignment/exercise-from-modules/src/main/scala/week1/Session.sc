@@ -86,6 +86,10 @@ object session {
 
   product(x => x * x)(3, 4)
 
+  //factorial function reusing the product function.
+  def fact(n: Int) = product(x => x)(1, n)
+  fact(5)
+
 
 
 }
