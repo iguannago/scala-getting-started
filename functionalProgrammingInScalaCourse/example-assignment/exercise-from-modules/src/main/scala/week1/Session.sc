@@ -1,10 +1,8 @@
 object session {
 
   def abs(x: Double): Double = if (x < 0) -x else x
-
   abs(-1)
   abs(1)
-
   def sqrt(x: Double): Double = {
     def sqrtIter(guess: Double): Double =
       if (isGoodEnough(guess)) guess
@@ -22,10 +20,10 @@ object session {
   sqrt(2)
   sqrt(9)
   sqrt(4)
+  sqrt(6)
   sqrt(5)
   sqrt(1e-60)
   sqrt(1e60)
-
 
   //Some recursive functions
 
@@ -44,7 +42,6 @@ object session {
    */
   def factorial(n: Int): Int =
     if (n == 0) 1 else n * factorial(n - 1)
-
   factorial(0)
   factorial(1)
   factorial(3)
@@ -52,7 +49,6 @@ object session {
   /*
   tail recursive factorial function
    */
-
   def tailRecursiveFactorial(n: Int): Int = {
     def factorialIter(acc: Int, n: Int): Int = {
       if (n == 0) acc
@@ -63,7 +59,26 @@ object session {
 
     factorialIter(1, 4)
   }
-
   tailRecursiveFactorial(4)
+
+  /*
+  anonymous functions
+   */
+  (a: Int, b: Int) => a + b
+
+  /*
+  high order functions
+   */
+  def sum(f: Int => Int, a: Int, b: Int): Int = {
+    def loop(a: Int, acc: Int): Int = {
+      if (a > b) acc
+      else loop(a + 1, acc + f(a))
+    }
+    loop(a, 0)
+  }
+
+  sum(x => x * x, 3, 5)
+
+
 
 }
