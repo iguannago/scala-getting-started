@@ -11,20 +11,20 @@ object rationals {
 
     def denom = y / g
 
-    def add(r: Rational) =
+    def + (r: Rational) =
       new Rational(numer * r.denom + r.numer * denom,
         denom * r.denom)
 
     def neg = new Rational(-numer, denom)
 
-    def sub(r: Rational) = add(r.neg)
+    def - (r: Rational) = this + r.neg
 
     private def gcd(a: Int, b: Int): Int = if (b == 0) a
     else gcd(b, a % b)
 
-    def less(r: Rational) = numer * r.denom < r.numer * denom
+    def < (r: Rational) = numer * r.denom < r.numer * denom
 
-    def max(r: Rational) = if (this.less(r)) r else this
+    def max(r: Rational) = if (this < r) r else this
 
     override def toString = numer + "/" + denom
 
@@ -35,28 +35,27 @@ object rationals {
   r.neg
 
   val s = new Rational(2, 4)
-  r.add(s).toString()
+  r + s
 
-  r.sub(s)
+  r - s
 
-  new Rational(1, 2).add(new Rational(2, 3)).toString()
+  new Rational(1, 2) + (new Rational(2, 3))
 
 
   val x = new Rational(1, 3)
   val y = new Rational(5, 7)
   val z = new Rational(3, 2)
 
-  x.sub(y).sub(z)
-  y.add(y)
+  x - y - z
+  y + z
 
-  x.less(y)
-  x.max(y)
+  x < y
+  x max y
 
 //  val strange = new Rational(1, 0)
 //  strange.add(strange)
 
-  x add y
-  x.add(y)
+  x + y
 
   x max y
 
