@@ -52,8 +52,13 @@ object rationals {
   x.less(y)
   x.max(y)
 
-  val strange = new Rational(1, 0)
-  strange.add(strange)
+//  val strange = new Rational(1, 0)
+//  strange.add(strange)
+
+  x add y
+  x.add(y)
+
+  x max y
 
 
 }
