@@ -4,9 +4,11 @@ object rationals {
   x1.denom
 
   class Rational(x: Int, y: Int) {
-    def numer = x
+    private val g = gcd(x, y)
 
-    def denom = y
+    def numer = x / g
+
+    def denom = y / g
 
     def add(r: Rational) =
       new Rational(numer * r.denom + r.numer * denom,
@@ -15,6 +17,13 @@ object rationals {
     def neg = new Rational(-numer, denom)
 
     def sub(r: Rational) = add(r.neg)
+
+    private def gcd(a: Int, b: Int): Int = if (b == 0) a
+    else gcd(b, a % b)
+
+    def less(r: Rational) = numer * r.denom < r.numer * denom
+
+    def max(r: Rational) = if (this.less(r)) r else this
 
     override def toString = numer + "/" + denom
 
@@ -37,6 +46,10 @@ object rationals {
   val z = new Rational(3, 2)
 
   x.sub(y).sub(z)
+  y.add(y)
+
+  x.less(y)
+  x.max(y)
 
 
 }
