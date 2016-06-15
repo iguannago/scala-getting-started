@@ -4,6 +4,7 @@ object rationals {
   x1.denom
 
   class Rational(x: Int, y: Int) {
+    require(y != 0, "denom must be nonzero")
     private val g = gcd(x, y)
 
     def numer = x / g
@@ -50,6 +51,9 @@ object rationals {
 
   x.less(y)
   x.max(y)
+
+  val strange = new Rational(1, 0)
+  strange.add(strange)
 
 
 }
