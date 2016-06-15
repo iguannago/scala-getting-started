@@ -15,9 +15,9 @@ object rationals {
       new Rational(numer * r.denom + r.numer * denom,
         denom * r.denom)
 
-    def neg = new Rational(-numer, denom)
+    def unary_- : Rational = new Rational(-numer, denom)
 
-    def - (r: Rational) = this + r.neg
+    def - (r: Rational) = this + -r
 
     private def gcd(a: Int, b: Int): Int = if (b == 0) a
     else gcd(b, a % b)
@@ -32,7 +32,7 @@ object rationals {
 
 
   val r = new Rational(1, 3)
-  r.neg
+  -r
 
   val s = new Rational(2, 4)
   r + s
@@ -59,6 +59,7 @@ object rationals {
 
   x max y
 
+  -x
 
 }
 
