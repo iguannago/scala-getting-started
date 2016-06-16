@@ -54,6 +54,14 @@ class FunSetSuite extends FunSuite {
     assert(contains(x => true, 100))
   }
 
+  test("set of all negative integers returns true for a negative integer") {
+    assert(contains(x => x < 0, -1))
+  }
+
+  test("set of all negative integers returns false for a positive integer") {
+    assert(!contains(x => x < 0, 1))
+  }
+
   /**
    * When writing tests, one would often like to re-use certain values for multiple
    * tests. For instance, we would like to create an Int-set and have multiple test
