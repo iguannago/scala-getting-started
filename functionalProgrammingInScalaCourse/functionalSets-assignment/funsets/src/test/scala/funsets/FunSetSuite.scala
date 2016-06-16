@@ -137,6 +137,15 @@ class FunSetSuite extends FunSuite {
     }
   }
 
+  test("filter set by even numbers") {
+    new TestSets {
+      val numbers = union(s1,s2)
+      val evenNumbers = filter(numbers, x => x % 2 == 0)
+      assert(contains(evenNumbers, 2))
+      assert(!contains(evenNumbers, 1))
+    }
+  }
+
 
 
 
