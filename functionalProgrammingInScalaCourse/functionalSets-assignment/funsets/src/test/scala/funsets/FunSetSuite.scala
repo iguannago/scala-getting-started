@@ -106,6 +106,7 @@ class FunSetSuite extends FunSuite {
        * the test fails. This helps identifying which assertion failed.
        */
       assert(contains(s1, 1), "Singleton")
+      assert(!contains(s1, 2), "Singleton")
     }
   }
 
@@ -117,6 +118,17 @@ class FunSetSuite extends FunSuite {
       assert(!contains(s, 3), "Union 3")
     }
   }
+
+  test("intersect of s1 and s2 is empty") {
+    new TestSets {
+      val s = intersect(s1, s2)
+      assert(!contains(s, 1), "intersect 1")
+      assert(!contains(s, 2), "intersect 2")
+      assert(!contains(s, 3), "intersect 3")
+    }
+  }
+
+
 
 
 }
