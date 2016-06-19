@@ -146,6 +146,19 @@ class FunSetSuite extends FunSuite {
     }
   }
 
+  test("forall on s1 returns false for the predicate when x => x == 1") {
+    new TestSets {
+      assert(forall(s1, s1))
+      assert(!forall(s1, s2))
+    }
+  }
+
+  test("exists returns true for s1 when p is x => x == 1") {
+    new TestSets {
+      assert(exists(s1, x => x == 1))
+    }
+  }
+
 
 
 
