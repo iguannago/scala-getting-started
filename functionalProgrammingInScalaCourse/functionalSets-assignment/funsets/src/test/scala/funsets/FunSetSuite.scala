@@ -159,6 +159,16 @@ class FunSetSuite extends FunSuite {
     }
   }
 
+  test("mapping") {
+    new TestSets {
+      val map1 = map(s1, x => x * 2)
+      assert(forall(map1,s2))
+
+      val map2 = map(s1, x => 3)
+      assert(forall(map2, s3))
+    }
+  }
+
 
 
 
