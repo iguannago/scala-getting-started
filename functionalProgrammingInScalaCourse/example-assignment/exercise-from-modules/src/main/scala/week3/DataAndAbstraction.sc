@@ -7,6 +7,8 @@ abstract class IntSets {
   def incl(x: Int): IntSets
 
   def contains(x: Int): Boolean
+
+  def union(other: IntSets): IntSets
 }
 
 class Empty extends IntSets {
@@ -16,6 +18,8 @@ class Empty extends IntSets {
   def contains(x: Int): Boolean = false
 
   override def toString = "."
+
+  def union(other: IntSets): IntSets = other
 }
 
 class NonEmpty(elem: Int, left: IntSets, right: IntSets) extends IntSets {
@@ -28,10 +32,16 @@ class NonEmpty(elem: Int, left: IntSets, right: IntSets) extends IntSets {
   else true
 
   override def toString = "{" + left + elem + right + "}"
+
+  def union(other: IntSets): IntSets =
+    ((left union right) union other) incl elem
 }
 
 val t1 = new NonEmpty(3, new Empty, new Empty)
 val t2 = t1 incl 4
+val t3 = new Empty
+val unionSetOfEmpty = t3 union t1
+val union = t1 union t2
 
 
 
