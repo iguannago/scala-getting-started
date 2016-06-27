@@ -1,3 +1,5 @@
+import week3._
+
 object intsets extends App {
   println("Welcome to the Week3")
 
@@ -36,14 +38,13 @@ class NonEmpty(elem: Int, left: IntSets, right: IntSets) extends IntSets {
   def union(other: IntSets): IntSets =
     ((left union right) union other) incl elem
 }
-
 val t1 = new NonEmpty(3, new Empty, new Empty)
 val t2 = t1 incl 4
 val t3 = new Empty
 val unionSetOfEmpty = t3 union t1
 val union = t1 union t2
 
-val nothing = new Nothing
+//val nothing = new Nothing
 
 if (true) 1 else false
 
