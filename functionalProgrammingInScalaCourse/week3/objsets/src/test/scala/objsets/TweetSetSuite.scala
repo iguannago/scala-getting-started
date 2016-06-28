@@ -27,6 +27,24 @@ class TweetSetSuite extends FunSuite {
 
   def size(set: TweetSet): Int = asSet(set).size
 
+  test("s1 is empty") {
+    new TestSets {
+      assert(set1.isEmpty)
+    }
+  }
+
+  test("s2 is not empty") {
+    new TestSets {
+      assert(!set2.isEmpty)
+    }
+  }
+
+  test("retweeted") {
+    new TestSets {
+      assert(set4c.mostRetweeted.retweets === 20)
+    }
+  }
+
   test("filter: on empty set") {
     new TestSets {
       assert(size(set1.filter(tw => tw.user == "a")) === 0)

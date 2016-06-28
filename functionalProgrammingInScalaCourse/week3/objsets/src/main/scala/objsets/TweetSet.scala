@@ -60,10 +60,12 @@ abstract class TweetSet {
     * Calling `mostRetweeted` on an empty set should throw an exception of
     * type `java.util.NoSuchElementException`.
     *
-    * Question: Should we implment this method here, or should it remain abstract
+    * Question: Should we implement this method here, or should it remain abstract
     * and be implemented in the subclasses?
     */
-  def mostRetweeted: Tweet = ???
+  def mostRetweeted: Tweet
+
+  def isEmpty: Boolean
 
   /**
     * Returns a list containing all tweets of this set, sorted by retweet count
@@ -120,6 +122,10 @@ class Empty extends TweetSet {
   def foreach(f: Tweet => Unit): Unit = ()
 
   def union(that: TweetSet): TweetSet = that
+
+  def mostRetweeted = throw new NoSuchElementException
+
+  def isEmpty = true
 }
 
 class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
@@ -130,6 +136,12 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
   }
 
   def union(that: TweetSet): TweetSet = (left union (right union that)).incl(elem)
+
+  def mostRetweeted = {
+   new Tweet("a", "b", 10)
+  }
+
+  def isEmpty = false
 
   /**
     * The following methods are already implemented
