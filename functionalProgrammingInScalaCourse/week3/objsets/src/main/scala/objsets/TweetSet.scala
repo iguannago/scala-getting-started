@@ -49,7 +49,7 @@ abstract class TweetSet {
   /**
     * Returns a new `TweetSet` that is the union of `TweetSet`s `this` and `that`.
     *
-    * Question: Should we implment this method here, or should it remain abstract
+    * Question: Should we implement this method here, or should it remain abstract
     * and be implemented in the subclasses?
     */
   def union(that: TweetSet): TweetSet = ???
@@ -118,6 +118,8 @@ class Empty extends TweetSet {
   def remove(tweet: Tweet): TweetSet = this
 
   def foreach(f: Tweet => Unit): Unit = ()
+
+  override def union(that: TweetSet): TweetSet = that
 }
 
 class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
@@ -127,6 +129,7 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
     else left.filterAcc(p, right.filterAcc(p, acc))
   }
 
+  override def union(that: TweetSet): TweetSet = (left union (right union that)).incl(elem)
 
   /**
     * The following methods are already implemented
