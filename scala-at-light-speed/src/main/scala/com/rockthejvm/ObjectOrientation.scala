@@ -35,5 +35,40 @@ object ObjectOrientation extends App {
   val aCat: Animal = new Cat("Tom")
   aCat.eat()
 
+  //abstract class
+  abstract class WalkingAnimal {
+    val hasLegs = true //by default public, can restrict by private or protected
+
+    def walk(): Unit
+  }
+
+  class MouseIsWalkingAnimal extends WalkingAnimal {
+    override val hasLegs: Boolean = false
+
+    override def walk(): Unit = {
+      if (hasLegs) println("the Mouse can walk")
+      else println("the mouse can't walk")
+    }
+  }
+
+  val myMouse: WalkingAnimal = new MouseIsWalkingAnimal
+  myMouse.walk()
+
+  //interface
+  trait Carnivore {
+    def eat(): Unit
+
+  }
+
+  // single-class inheritance, multi-trait mixing
+  class Leon extends Animal with Carnivore {
+    override def eat(): Unit = println("I am a Leon a Carnivore animal")
+
+  }
+
+  val aLeon: Animal = new Leon
+  println(aLeon.eat())
+
+  //anonymous classes
 
 }
